@@ -3,16 +3,27 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mfc_dialog", "mfc_dialog\mfc_dialog.vcxproj", "{18B568EE-136E-47C4-A7AD-E702B74EFF0E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Bmpbtn", "Bmpbtn\Bmpbtn.vcxproj", "{87762EAE-0655-42F6-B04A-5CF68DFD7B8B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
 		Release|Win32 = Release|Win32
+		Template|Win32 = Template|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{18B568EE-136E-47C4-A7AD-E702B74EFF0E}.Debug|Win32.ActiveCfg = Debug|Win32
 		{18B568EE-136E-47C4-A7AD-E702B74EFF0E}.Debug|Win32.Build.0 = Debug|Win32
 		{18B568EE-136E-47C4-A7AD-E702B74EFF0E}.Release|Win32.ActiveCfg = Release|Win32
 		{18B568EE-136E-47C4-A7AD-E702B74EFF0E}.Release|Win32.Build.0 = Release|Win32
+		{18B568EE-136E-47C4-A7AD-E702B74EFF0E}.Template|Win32.ActiveCfg = Release|Win32
+		{18B568EE-136E-47C4-A7AD-E702B74EFF0E}.Template|Win32.Build.0 = Release|Win32
+		{87762EAE-0655-42F6-B04A-5CF68DFD7B8B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{87762EAE-0655-42F6-B04A-5CF68DFD7B8B}.Debug|Win32.Build.0 = Debug|Win32
+		{87762EAE-0655-42F6-B04A-5CF68DFD7B8B}.Release|Win32.ActiveCfg = Release|Win32
+		{87762EAE-0655-42F6-B04A-5CF68DFD7B8B}.Release|Win32.Build.0 = Release|Win32
+		{87762EAE-0655-42F6-B04A-5CF68DFD7B8B}.Template|Win32.ActiveCfg = Template|Win32
+		{87762EAE-0655-42F6-B04A-5CF68DFD7B8B}.Template|Win32.Build.0 = Template|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
