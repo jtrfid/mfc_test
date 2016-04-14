@@ -31,4 +31,5 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	CButton m_btnOK;
+	afx_msg void OnBnClickedOk();
 };
