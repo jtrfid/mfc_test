@@ -100,6 +100,10 @@ BOOL Cmfc_dialogDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
 	// TODO: 在此添加额外的初始化代码
+	// 调试信息输出printf("ok\n");
+	AllocConsole();
+	freopen("CONOUT$","a+",stdout);
+
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
