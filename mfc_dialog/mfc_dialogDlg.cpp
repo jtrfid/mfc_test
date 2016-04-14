@@ -168,8 +168,9 @@ HCURSOR Cmfc_dialogDlg::OnQueryDragIcon()
 
 void Cmfc_dialogDlg::OnBnClickedOk()
 {
-	m_myBtn1.EnableWindow(FALSE);
-
+	static bool b = false;
+	m_myBtn1.EnableWindow(b);
+	b = !b;
 	//CDialogEx::OnOK();
 }
 

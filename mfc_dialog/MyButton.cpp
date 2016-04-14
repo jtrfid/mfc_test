@@ -35,59 +35,43 @@ void CMyButton::DrawItem(LPDRAWITEMSTRUCT lpDrawItemStruct)
 
 	// 获取一个CDC指针 
 	CDC* pDC = CDC::FromHandle(lpDrawItemStruct->hDC);
-	//定义按钮区域并初始化 
+	// 获取按钮区域并初始化 
 	CRect rect(lpDrawItemStruct->rcItem); 
 
-	//设置背景模式
-	COLORREF oc = pDC->GetTextColor();
-	int iObk = pDC->SetBkMode(TRANSPARENT); 
-
-	//初始化按钮状态 
+	// 获取按钮状态 
 	UINT state = lpDrawItemStruct->itemState; 
-	CFont *pOldFont = NULL; 
-	int iYOffset = 0, iXOffset = 0;
+	
 	CString strText; 
 	GetWindowText(strText); 
-	rect.top += iYOffset; 
-	rect.left += iXOffset; 
+	
+	// draw the control edges 
+	if(state & ODS_DISABLED) // 按钮Disabled
+		pDC->DrawFrameControl(rect, DFC_BUTTON, DFCS_BUTTONPUSH | DFCS_PUSHED);
+	else // 按钮使能
+		pDC->DrawFrameControl(rect, DFC_BUTTON, DFCS_BUTTONPUSH); 
+	
+	// Deflate the drawing rect by the size of the button's edges     
+	rect.DeflateRect( CSize(GetSystemMetrics(SM_CXEDGE), GetSystemMetrics(SM_CYEDGE)));
 
-	// 按钮Disabled
-	if(state & ODS_DISABLED) {
-		//按钮置灰（DISABLED）
-		CBrush grayBrush; 
-		grayBrush.CreateSolidBrush (GetSysColor (COLOR_GRAYTEXT)); 
-		CSize sz = pDC->GetTextExtent(strText); 
-		int x = rect.left + (rect.Width() - sz.cx)/2; 
-		int y = rect.top + (rect.Height() - sz.cy)/2; 
-		rect.top += 2; 
-		rect.left += 2; 
-		pDC->SetTextColor(GetSysColor(COLOR_3DHIGHLIGHT)); 
-		pDC->DrawText(strText, rect, DT_CENTER | DT_VCENTER | DT_SINGLELINE); 
-		rect.top -= 2; 
-		rect.left -= 2; 
-		pDC->SetTextColor(GetSysColor(COLOR_GRAYTEXT)); 
-		pDC->DrawText(strText, rect, DT_CENTER | DT_VCENTER | DT_SINGLELINE); 
-	} 
-	else if (m_LBtnDown) { // 鼠标左键被按下
-		pDC->Draw3dRect(rect,GetSysColor(COLOR_3DSHADOW),GetSysColor(COLOR_3DHIGHLIGHT));
-		// 字体颜色
-		pDC->SetTextColor(RGB(0,0,255));
-		// 加上下划线（也可以用其他字体）
-		if(m_fUnderline.GetSafeHandle() == NULL) {
-			CFont *pFont = GetFont();
-			ASSERT(pFont);
-			LOGFONT lf;
-			pFont->GetLogFont(&lf);
-			lf.lfUnderline = TRUE;
-			m_fUnderline.CreatePointFontIndirect(&lf);
-		}
-		pOldFont = pDC->SelectObject(&m_fUnderline);
+	// 鼠标左键被按下
+	if (m_LBtnDown) { 
+		 pDC->FillSolidRect(rect, RGB(255, 255, 0)); // yellow     
 	}
-	else
-		pDC->SetTextColor(GetSysColor(COLOR_BTNTEXT));
+	// Draw the text           
+	if (!strText.IsEmpty()) {         
+		CSize Extent = pDC->GetTextExtent(strText); 
+		CPoint pt( rect.CenterPoint().x - Extent.cx/2,rect.CenterPoint().y - Extent.cy/2 );          
+		if (state & ODS_SELECTED) pt.Offset(1,1);          
+		int nMode = pDC->SetBkMode(TRANSPARENT);          
+		if (state & ODS_DISABLED)             
+			pDC->DrawState(pt, Extent, strText, DSS_DISABLED, TRUE, 0, (HBRUSH)NULL);
+		else {
+			pDC->DrawState(pt, Extent, strText, DSS_NORMAL, TRUE, 0, (HBRUSH)NULL);
+			pDC->TextOut(pt.x, pt.y, strText);     
+		}	     
+		pDC->SetBkMode(nMode);     
+	} 
 
-	pDC->DrawText(strText, rect, DT_CENTER | DT_VCENTER | DT_SINGLELINE); 
-	if(pOldFont) pDC->SelectObject(pOldFont);
 }
 
 // CMyButton 消息处理程序
