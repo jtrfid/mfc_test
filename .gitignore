@@ -85,3 +85,4 @@ Release/
 *.vcxproj.user
 *.sdf
 *.suo
+*.ipch
