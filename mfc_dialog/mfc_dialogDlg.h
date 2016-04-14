@@ -37,4 +37,6 @@ public:
 	// CMyButton–Õ∞¥≈•
 	CMyButton m_myBtn1;
 	afx_msg void OnBnClickedButton1();
+	// CBitmapButton
+	CBitmapButton m_BitmapButton;
 };

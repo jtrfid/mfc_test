@@ -22,6 +22,24 @@
     <None Include="res\mfc_dialog.ico">
       <Filter>资源文件</Filter>
     </None>
+    <None Include="res\up1.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\up2.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\right1.jpg">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\right2.jpg">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\right1.bmp">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="res\right2.bmp">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="mfc_dialog.h">

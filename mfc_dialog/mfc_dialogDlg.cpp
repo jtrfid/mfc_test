@@ -59,6 +59,7 @@ void Cmfc_dialogDlg::DoDataExchange(CDataExchange* pDX)
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Control(pDX, IDOK, m_btnOK);
 	//  DDX_Control(pDX, IDC_BUTTON1, m_myBtn1);
+	DDX_Control(pDX, IDC_Btn2, m_BitmapButton);
 }
 
 BEGIN_MESSAGE_MAP(Cmfc_dialogDlg, CDialogEx)
@@ -112,6 +113,12 @@ BOOL Cmfc_dialogDlg::OnInitDialog()
 	//GetDlgItem(IDC_BUTTON1)->ModifyStyle(0,BS_OWNERDRAW,0);
 	// 或
 	m_myBtn1.ModifyStyle(0,BS_OWNERDRAW,0);
+
+	/////////////////////////// CBitmapButton
+	m_BitmapButton.ModifyStyle(0,BS_OWNERDRAW,0); // 自绘
+	//正常显示（Up），鼠标按下（Down），获得焦点（Focused），不可用（Disabled）。
+	m_BitmapButton.LoadBitmaps(IDB_up1,IDB_up2,IDB_right1,IDB_right2);
+	m_BitmapButton.SizeToContent();  // 调整按钮大小为图片大小
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
@@ -178,4 +185,7 @@ void Cmfc_dialogDlg::OnBnClickedOk()
 void Cmfc_dialogDlg::OnBnClickedButton1()
 {
 	printf("CMyButton()\n");
+	static bool b = false;
+	m_BitmapButton.EnableWindow(b);
+	b = !b;
 }
