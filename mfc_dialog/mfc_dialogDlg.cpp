@@ -57,6 +57,7 @@ Cmfc_dialogDlg::Cmfc_dialogDlg(CWnd* pParent /*=NULL*/)
 void Cmfc_dialogDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDOK, m_btnOK);
 }
 
 BEGIN_MESSAGE_MAP(Cmfc_dialogDlg, CDialogEx)
@@ -150,4 +151,3 @@ HCURSOR Cmfc_dialogDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
 }
-
