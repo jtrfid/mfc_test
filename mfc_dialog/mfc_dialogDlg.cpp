@@ -60,6 +60,7 @@ void Cmfc_dialogDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDOK, m_btnOK);
 	//  DDX_Control(pDX, IDC_BUTTON1, m_myBtn1);
 	DDX_Control(pDX, IDC_Btn2, m_BitmapButton);
+	DDX_Control(pDX, IDC_BUTTON2, m_MyBitmapButton);
 }
 
 BEGIN_MESSAGE_MAP(Cmfc_dialogDlg, CDialogEx)
@@ -120,6 +121,10 @@ BOOL Cmfc_dialogDlg::OnInitDialog()
 	m_BitmapButton.LoadBitmaps(IDB_up1,IDB_up2,IDB_right1,IDB_right2);
 	m_BitmapButton.SizeToContent();  // 调整按钮大小为图片大小
 
+	///////////////////////// CMyBitmapButton
+	m_MyBitmapButton.LoadBitmaps(IDB_up1,IDB_up2,IDB_right1);
+	m_MyBitmapButton.SizeToContent();
+
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 
@@ -177,6 +182,7 @@ void Cmfc_dialogDlg::OnBnClickedOk()
 {
 	static bool b = false;
 	m_myBtn1.EnableWindow(b);
+	m_MyBitmapButton.EnableWindow(b);
 	b = !b;
 	//CDialogEx::OnOK();
 }

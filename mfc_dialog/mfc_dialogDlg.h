@@ -5,6 +5,7 @@
 #pragma once
 #include "afxwin.h"
 #include "MyButton.h"
+#include "MyBitmapButton.h"
 
 
 // Cmfc_dialogDlg ¶Ô»°¿ò
@@ -39,4 +40,6 @@ public:
 	afx_msg void OnBnClickedButton1();
 	// CBitmapButton
 	CBitmapButton m_BitmapButton;
+	// CMyBitmapButton
+	CMyBitmapButton m_MyBitmapButton;
 };
