@@ -3,6 +3,8 @@
 //
 
 #pragma once
+#include "afxwin.h"
+#include "MyButton.h"
 
 
 // Cmfc_dialogDlg 对话框
@@ -32,4 +34,7 @@ protected:
 public:
 	CButton m_btnOK;
 	afx_msg void OnBnClickedOk();
+	// CMyButton型按钮
+	CMyButton m_myBtn1;
+	afx_msg void OnBnClickedButton1();
 };

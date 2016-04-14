@@ -108,6 +108,7 @@
   <ItemGroup>
     <ClCompile Include="mfc_dialog.cpp" />
     <ClCompile Include="mfc_dialogDlg.cpp" />
+    <ClCompile Include="MyButton.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -119,4 +120,9 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties RESOURCE_FILE="mfc_dialog.rc" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

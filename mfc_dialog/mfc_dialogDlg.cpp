@@ -58,6 +58,7 @@ void Cmfc_dialogDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Control(pDX, IDOK, m_btnOK);
+	//  DDX_Control(pDX, IDC_BUTTON1, m_myBtn1);
 }
 
 BEGIN_MESSAGE_MAP(Cmfc_dialogDlg, CDialogEx)
@@ -65,6 +66,7 @@ BEGIN_MESSAGE_MAP(Cmfc_dialogDlg, CDialogEx)
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDOK, &Cmfc_dialogDlg::OnBnClickedOk)
+	ON_BN_CLICKED(IDC_BUTTON1, &Cmfc_dialogDlg::OnBnClickedButton1)
 END_MESSAGE_MAP()
 
 
@@ -104,6 +106,12 @@ BOOL Cmfc_dialogDlg::OnInitDialog()
 	AllocConsole();
 	freopen("CONOUT$","a+",stdout);
 
+	// 关联按钮于界面添加的CButton按钮资源IDC_BUTTON1
+	m_myBtn1.SubclassDlgItem(IDC_BUTTON1,this); // 或者使用类向导添加CButton m_myBtn1，手工将其修改为CMyButton m_myBtn1
+	// 设置自画窗口
+	//GetDlgItem(IDC_BUTTON1)->ModifyStyle(0,BS_OWNERDRAW,0);
+	// 或
+	m_myBtn1.ModifyStyle(0,BS_OWNERDRAW,0);
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
@@ -160,6 +168,13 @@ HCURSOR Cmfc_dialogDlg::OnQueryDragIcon()
 
 void Cmfc_dialogDlg::OnBnClickedOk()
 {
-	// TODO: 在此添加控件通知处理程序代码
-	CDialogEx::OnOK();
+	m_myBtn1.EnableWindow(FALSE);
+
+	//CDialogEx::OnOK();
+}
+
+
+void Cmfc_dialogDlg::OnBnClickedButton1()
+{
+	printf("CMyButton()\n");
 }
