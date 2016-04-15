@@ -116,7 +116,7 @@ BOOL Cmfc_dialogDlg::OnInitDialog()
 	m_myBtn1.ModifyStyle(0,BS_OWNERDRAW,0);
 
 	/////////////////////////// CBitmapButton
-	m_BitmapButton.ModifyStyle(0,BS_OWNERDRAW,0); // 自绘
+	m_BitmapButton.ModifyStyle(0,BS_OWNERDRAW,0); // 自绘 
 	//正常显示（Up），鼠标按下（Down），获得焦点（Focused），不可用（Disabled）。
 	m_BitmapButton.LoadBitmaps(IDB_up1,IDB_up2,IDB_right1,IDB_right2);
 	m_BitmapButton.SizeToContent();  // 调整按钮大小为图片大小
