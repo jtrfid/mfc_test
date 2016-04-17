@@ -69,6 +69,7 @@ BEGIN_MESSAGE_MAP(Cmfc_dialogDlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	ON_BN_CLICKED(IDOK, &Cmfc_dialogDlg::OnBnClickedOk)
 	ON_BN_CLICKED(IDC_BUTTON1, &Cmfc_dialogDlg::OnBnClickedButton1)
+	ON_MESSAGE(WM_MY_MESSAGE,&Cmfc_dialogDlg::OnMyMessage)
 END_MESSAGE_MAP()
 
 
@@ -184,6 +185,10 @@ void Cmfc_dialogDlg::OnBnClickedOk()
 	m_myBtn1.EnableWindow(b);
 	m_MyBitmapButton.EnableWindow(b);
 	b = !b;
+
+	HWND h = this->GetSafeHwnd();
+	::PostMessage(h,WM_MY_MESSAGE,1,2);
+
 	//CDialogEx::OnOK();
 }
 
@@ -194,4 +199,11 @@ void Cmfc_dialogDlg::OnBnClickedButton1()
 	static bool b = false;
 	m_BitmapButton.EnableWindow(b);
 	b = !b;
+}
+
+// 自定义消息
+LRESULT Cmfc_dialogDlg::OnMyMessage(WPARAM wParam,LPARAM lParam)
+{
+	printf("自定义消息响应,%d,%d\n",wParam,lParam);
+	return 0;
 }

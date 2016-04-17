@@ -7,6 +7,7 @@
 #include "MyButton.h"
 #include "MyBitmapButton.h"
 
+#define WM_MY_MESSAGE (WM_USER+100)  
 
 // Cmfc_dialogDlg ¶Ô»°¿ò
 class Cmfc_dialogDlg : public CDialogEx
@@ -31,6 +32,7 @@ protected:
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
+	afx_msg LRESULT OnMyMessage(WPARAM wParam,LPARAM lParam);
 	DECLARE_MESSAGE_MAP()
 public:
 	CButton m_btnOK;
