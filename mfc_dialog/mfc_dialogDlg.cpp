@@ -11,6 +11,11 @@
 #define new DEBUG_NEW
 #endif
 
+typedef struct  
+{
+	int testInt;
+	bool testBool;
+}MYmsg;
 
 // 用于应用程序“关于”菜单项的 CAboutDlg 对话框
 
@@ -187,7 +192,11 @@ void Cmfc_dialogDlg::OnBnClickedOk()
 	b = !b;
 
 	HWND h = this->GetSafeHwnd();
-	::PostMessage(h,WM_MY_MESSAGE,1,2);
+	MYmsg* msg = new MYmsg();
+	msg->testBool = true;
+	msg->testInt = 100;
+
+	::PostMessage(h,WM_MY_MESSAGE,1,(LPARAM)msg);
 
 	//CDialogEx::OnOK();
 }
@@ -204,6 +213,8 @@ void Cmfc_dialogDlg::OnBnClickedButton1()
 // 自定义消息
 LRESULT Cmfc_dialogDlg::OnMyMessage(WPARAM wParam,LPARAM lParam)
 {
-	printf("自定义消息响应,%d,%d\n",wParam,lParam);
+	MYmsg *msg = (MYmsg *)lParam;
+	printf("自定义消息响应,%d,%d,%d\n",wParam,msg->testBool,msg->testInt);
+	delete msg;
 	return 0;
 }
